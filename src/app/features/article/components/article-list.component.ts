@@ -7,45 +7,56 @@ import { DatePipe } from "@angular/common";
 @Component({
     selector: 'app-article-list',
     template: `
-        @if (loading) {
-        <div class="article-preview">Loading articles...</div>
+    @if (loading) {
+            <div class="text-center p-3">
+                <span class="spinner-border text-primary" role="status"></span>
+                <p>Loading articles...</p>
+            </div>
         }
 
         @if (!loading) {
-        @for (article of results; track article.slug) {
-            <div class="article-preview">
-            <div class="article-meta">
-                <a href="/profile">
-                <img [src]="article.author.image" />
-                </a>
-                <div class="info">
-                <a class="author" href="/author">
-                    {{ article.author.username }}
-                </a>
-                <span class="date">{{ article.createdAt | date:'longDate' }}</span>
+            @for (article of results; track article.slug) {
+                <div class="card article-card">
+                    <div class="card-header d-flex align-items-center">
+                        <a href="/profile">
+                            <img [src]="article.author.image" class="author-img rounded-circle" />
+                        </a>
+                        <div class="info ms-2">
+                            <a class="author text-primary fw-bold" href="/author">
+                                {{ article.author.username }}
+                            </a>
+                            <span class="date d-block text-muted">
+                                <i class="ion-calendar"></i> {{ article.createdAt | date:'longDate' }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <a href="/details" class="preview-link text-decoration-none">
+                            <h5 class="card-title text-dark">{{ article.title }}</h5>
+                            <p class="card-text text-muted">{{ article.description }}</p>
+                            <span class="text-success">Read more...</span>
+                        </a>
+                        <ul class="tag-list list-inline mt-2">
+                            @for (tag of article.tagList; track tag) {
+                                <li class="list-inline-item badge bg-secondary">{{ tag }}</li>
+                            }
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <a href="/details"  class="preview-link">
-                <h1>{{ article.title }}</h1>
-                <p>{{ article.description }}</p>
-                <span>Read more...</span>
-                <ul class="tag-list">
-                @for (tag of article.tagList; track tag) {
-                    <li class="tag-default tag-pill tag-outline">{{ tag }}</li>
-                }
-                </ul>
-            </a>
-            </div>
-        } @empty {
-            <div class="article-preview">No articles are here... yet.</div>
-        }
+            } @empty {
+                <div class="text-center text-muted p-4">
+                    <i class="ion-sad-outline ion-3x"></i>
+                    <p>No articles are here... yet.</p>
+                </div>
+            }
         }
     `,
     imports: [DatePipe],
     standalone: true
 })
 
-export class ArticleListComponent {
+export default class ArticleListComponent {
     results: Article[] = [];
     loading = false;
 

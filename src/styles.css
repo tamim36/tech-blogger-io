@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+/* Article Card */
+.article-card {
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.article-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Author Image */
+.author-img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+/* Article Tags */
+.tag-list .badge {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+}
+
+/* Centered Loading */
+.text-center p {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Empty Message */
+.text-center i {
+    color: #ccc;
+}
