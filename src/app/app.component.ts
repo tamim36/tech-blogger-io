@@ -11,7 +11,6 @@ import { ArticleListConfig } from './features/article/models/article-list-config
       <router-outlet />
     </div>
   `,
-  styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'tech-blogger-io';

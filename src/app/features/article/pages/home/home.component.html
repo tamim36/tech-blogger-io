@@ -32,23 +32,26 @@
 
         <app-article-list [limit]="10" [config]="listConfig"></app-article-list>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3" *rxLet="tags$; let tags">
         <div class="sidebar p-3 border rounded">
-            <h5 class="fw-bold">Popular Tags</h5>
+          <h5 class="fw-bold">Popular Tags</h5>
 
-            <div class="tag-list">
-                <a href="" class="tag-defualt tag-pill badge bg-secondary text-white me-1">
-                    <i class="ion-pricetag"></i> Machine Learning
-                </a>
-            </div>
+          @for (tag of tags; track tag) {
+          <div class="tag-list">
+            <a
+              href=""
+              class="tag-defualt tag-pill badge bg-secondary text-white me-1"
+            >
+              <i class="ion-pricetag"></i> {{ tag }}
+            </a>
+          </div>
+          }
 
-            <div class="text-muted mt-3">
-                <i class="ion-load-c ion-spin"></i> Loading Tags ...
-            </div>
+          <div [hidden]="tagsLoaded" class="text-muted mt-3">
+            <i class="ion-load-c ion-spin"></i> Loading Tags ...
+          </div>
 
-            <div class="text-muted">
-                No Tags here ... yet.
-            </div>
+          <div [hidden]="!tagsLoaded || tags.length > 0" class="text-muted">No Tags here ... yet.</div>
         </div>
       </div>
     </div>

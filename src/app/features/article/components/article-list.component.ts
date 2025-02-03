@@ -3,6 +3,7 @@ import { Article } from "../models/article.model";
 import { ArticleListConfig } from "../models/article-list-config.model";
 import { ArticleService } from "../services/articles.service";
 import { DatePipe } from "@angular/common";
+import { TagsService } from "../services/tags.service";
 
 @Component({
     selector: 'app-article-list',
