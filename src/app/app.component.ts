@@ -7,16 +7,11 @@ import { ArticleListConfig } from './features/article/models/article-list-config
   selector: 'app-root',
   imports: [RouterOutlet, RouterOutlet],
   template: `
-    <div class="container">
+    <div class="container main-body">
       <router-outlet />
     </div>
   `,
 })
 export class AppComponent {
   title = 'tech-blogger-io';
-  listConfig: ArticleListConfig = {
-    type: '',
-    filters: {}
-  };
-  
 }

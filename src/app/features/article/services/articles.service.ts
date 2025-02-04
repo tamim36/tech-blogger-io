@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { ArticleListConfig } from "../models/article-list-config.model";
-import { Observable } from "rxjs";
+import { Observable, map } from "rxjs";
 import { Article } from "../models/article.model";
 import { Injectable } from "@angular/core";
 
@@ -20,5 +20,11 @@ export class ArticleService {
             "/articles" + (config.type === "feed" ? "/feed" : ""),
             { params },
         );
+    }
+
+    getArticle(slug: string): Observable< Article >{
+        return this.http
+            .get<{ article: Article }>(`/articles/${slug}`)
+            .pipe(map((data) => data.article));
     }
 }
