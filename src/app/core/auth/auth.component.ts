@@ -4,6 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { UserService } from './services/user.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ListErrorsComponent } from '../../shared/components/list-errors/list-errors.component';
 
 interface AuthForm {
   email: FormControl<string>;
@@ -13,7 +14,7 @@ interface AuthForm {
 
 @Component({
   selector: 'app-auth',
-  imports: [RouterLink, ReactiveFormsModule],
+  imports: [RouterLink, ReactiveFormsModule, ListErrorsComponent],
   templateUrl: './auth.component.html'
 })
 export default class AuthComponent implements OnInit {

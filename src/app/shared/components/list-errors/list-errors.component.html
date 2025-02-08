@@ -1,0 +1,9 @@
+@if (errorList.length > 0) {
+    <div class="alert alert-danger">
+        <ul class="error-messages">
+            @for (error of errorList; track error) {
+                <li>{{ error }}</li>
+            }
+        </ul>
+    </div>
+}

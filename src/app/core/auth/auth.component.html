@@ -11,6 +11,7 @@
                         <a [routerLink]="['/register']">Need an account?</a>
                     }
                 </p>
+                <app-list-errors [errors]="errors" />
                 <form [formGroup]="authForm" (ngSubmit)="submitForm()">
                     <fieldset [disabled]="isSubmitting" class="form-group">
                         @if (authType === "register") {
