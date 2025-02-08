@@ -3,10 +3,11 @@
 import { Component, Input } from '@angular/core';
 import { Article } from '../models/article.model';
 import { DatePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-article-preview',
-  imports: [DatePipe],
+  imports: [DatePipe, RouterLink],
   template: `
     <div class="card article-card">
       <div class="card-header d-flex align-items-center">
@@ -25,7 +26,7 @@ import { DatePipe } from '@angular/common';
       </div>
 
       <div class="card-body">
-        <a href="/details" class="preview-link text-decoration-none">
+        <a [routerLink]="['/articles/' + article.slug]" class="preview-link text-decoration-none">
           <h5 class="card-title text-dark">{{ article.title }}</h5>
           <p class="card-text text-muted">{{ article.description }}</p>
           <span class="text-success">Read more...</span>

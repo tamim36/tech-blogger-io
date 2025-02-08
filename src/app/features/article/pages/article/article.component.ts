@@ -2,10 +2,12 @@ import { Component, Input } from '@angular/core';
 import { ArticleService } from '../../services/articles.service';
 import { Article } from '../../models/article.model';
 import { DatePipe } from '@angular/common';
+import { LineBreaksPipe } from '../../../../shared/pipes/line-breaks.pipe';
+import { ArticleCommentComponent } from '../../components/article-comment.component';
 
 @Component({
   selector: 'app-article',
-  imports: [DatePipe],
+  imports: [DatePipe, LineBreaksPipe, ArticleCommentComponent],
   templateUrl: './article.component.html',
 })
 export default class ArticleComponent {

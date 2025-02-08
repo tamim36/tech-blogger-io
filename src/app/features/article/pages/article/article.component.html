@@ -1,8 +1,17 @@
-<div class="article-preview">
-  <p>{{ article?.title }}</p>
-  <p>{{ article?.description }}</p>
-  <div class="col-md-9">
-    <p>{{ article?.body }}</p>
+<div class="card mb-4 shadow-sm">
+  <div class="card-header bg-success text-white">
+    <h4 class="mb-0">{{ article?.title }}</h4>
   </div>
-  <p>{{ article?.createdAt | date }}</p>
+  <div class="card-body">
+    <p class="card-text text-muted">{{ article?.description }}</p>
+    <hr>
+    <div class="article-body" [innerHTML]="article?.body || '' | lineBreaks">
+    </div>
+    <hr>
+    <div class="d-flex justify-content-end">
+      <small class="text-muted">Published on: {{ article?.createdAt | date:'mediumDate' }}</small>
+    </div>
+  </div>
 </div>
+
+<app-article-comment [slug]="article?.slug!" />
