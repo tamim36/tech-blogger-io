@@ -13,7 +13,7 @@ export class CommentService {
             Authorization: `Token ${this.jwtService.getToken()}`
         };
         return this.http
-            .get<{ comments: Comment[] }>(`/articles/${articleSlug}/comments`, { headers })
+            .get<{ comments: Comment[] }>(`/articles/${articleSlug}/comments`)
             .pipe(map(res => res.comments));
     }
 
